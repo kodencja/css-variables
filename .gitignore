@@ -11,6 +11,12 @@
 # production
 /build
 
+#copies
+/src/components-k
+/src/App1.js
+/src/App1.css
+/src/index1.css
+
 # misc
 .DS_Store
 .env.local

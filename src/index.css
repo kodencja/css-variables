@@ -11,3 +11,34 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+#root{
+width: 100vw;
+}
+
+.main{
+  max-width: 100%;
+}
+
+.sec1 {
+  background-color: forestgreen;
+  color: white;
+  border-bottom: 4px solid whitesmoke;
+  border-top: 4px solid whitesmoke;
+}
+
+.sec2 {
+  background-color: steelblue;
+  width: 100vw;
+}
+
+.container {
+  min-width: 100%;
+}
+
+.row {
+  text-align: center;
+  justify-content: center;
+  align-items: middle;
+  box-sizing: border-box;
+}
