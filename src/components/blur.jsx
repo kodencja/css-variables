@@ -1,8 +1,15 @@
-import React, { Component } from "react";
+import React from "react";
 
-class Blur extends Component {
-  render() {
-    return (
+function areEqual(prevProps, nextProps) {
+  return prevProps.onValue.blur === nextProps.onValue.blur;
+}
+
+function Blur(props) {
+  const { onChanging, onValue } = props;
+  console.log("Blur Fn");
+
+  return React.useMemo(
+    () => (
       <div className="col-10 col-sm-4">
         <label htmlFor="blur">Blur</label>
         <input
@@ -12,13 +19,15 @@ class Blur extends Component {
           name="blur"
           min="0"
           max="30"
-          onChange={this.props.onChanging}
-          value={this.props.onValue.blur}
+          onChange={onChanging}
+          value={onValue.blur}
           data-sizing="px"
         />
       </div>
-    );
-  }
+    ),
+    [onChanging, onValue.blur]
+  );
 }
 
-export default Blur;
+export default React.memo(Blur, areEqual);
+// export default React.memo(Blur);
