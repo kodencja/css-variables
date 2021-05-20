@@ -101,6 +101,16 @@ a:hover {
   text-decoration: none;
 }
 
+.dev-box a {
+  color: darkslategrey;
+  font-weight: 700;
+  float: right;
+}
+
+.dev-box a:hover {
+  color: rgb(60, 100, 100);
+}
+
 .home-page-link:hover > a {
   color: rgb(235, 235, 235);
 }

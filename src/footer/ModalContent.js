@@ -32,6 +32,13 @@ function ModalContent() {
             values of a component's 'props', as well as <b>lazy</b> and{" "}
             <b>Suspense</b> React's libraries. <br />
           </p>
+          <a
+            href="https://github.com/kodencja/css-variables"
+            target="_blank"
+            rel="noreferrer"
+          >
+            See the code
+          </a>
         </div>
       </div>
     </>
