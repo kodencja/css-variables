@@ -9,11 +9,7 @@
 /coverage
 
 #copies
-/src/components-k
-/src/App1.js
-/src/App1.css
-/src/index1.css
-/src/components/classes
+/src/copies
 
 # misc
 .DS_Store

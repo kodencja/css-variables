@@ -11,7 +11,7 @@ function areEqual(prevProps, nextProps) {
 
 function ModalComp(props) {
   const { isModalOpen, handleModalOpen } = props;
-  console.log("ModalComp Fn");
+  // console.log("ModalComp Fn");
 
   return (
     <Modal

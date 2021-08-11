@@ -1,7 +1,9 @@
 import React, { Component, lazy, Suspense } from "react";
+// import Photo from "./components/Photo";
 import Controls from "./components/Controls";
+// import axios from "axios";
+// import "./App.css";
 import Footer from "./footer/Footer";
-import 'bootstrap/dist/css/bootstrap.css';
 import './css/style.css'
 
 const Photo = lazy(() => import("./components/Photo"));
@@ -11,50 +13,52 @@ export const ControlModalContext = React.createContext();
 
 class App extends Component {
   state = {
-    blur: "0",
-    color: "#f7f9d0",
-    bgrCol: "#527198",
-    skew: 10,
-    skewChanged: false,
+    img: "",
+    blur: "2",
+    color: "#ffffff",
+    bgrCol: "forestgreen",
+    skew: 0,
     rotatex: 0,
-    rotatey: 10,
-    rotatez: 15,
-    spacing: 10,
+    rotatey: 0,
+    spacing: 20,
     transOrigX: 50,
     transOrigY: 50,
     transOrigZ: 0,
-    animation: 'animRotateXYZ',
+    animation: 'animRotate',
     modalIsOpen: false,
     outputStyle: false,
   };
 
-  appRef = React.createRef();
+  // componentDidMount() {
+  // axios
+  //   .get(
+  //     "https://images.unsplash.com/photo-1601758282760-b6cc3d07523d?ixid=MXwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80",
+  //     {
+  //       responseType: "arraybuffer",
+  //       ContentType: "image/jpg",
+  //     }
+  //   )
+  //   .then((res) => {
+  //     this.setState({ img: res.config.url });
+  //   });
+  // }
 
-  componentDidUpdate(){
-    
-    const skewVal = getComputedStyle(this.appRef.current).getPropertyValue("--skewVal");
-
-    const skewValNo = parseInt(skewVal);
-
-    if(skewValNo != this.state.skew){
-      const animName = this.state.animation;
-
-      this.setState({skewChanged: !this.state.skewChanged, animation: 'none'}, ()=>{
-        this.setState({animation: animName});
-      })
-    }  
-  }
+  // componentDidUpdate(){
+  //   console.log(this.state.outputStyle);
+  //   console.log(this.state.rotatex);
+  // }
 
   handleChange = (e) => {
     this.setState({ [e.target.name]: e.target.value });
-    if(e.target.name === 'skew'){
-      this.setState({skewChanged: !this.state.skewChanged})
-    }
   };
 
-  setOutputStyle = () =>{
-    // console.log("setOutputStyle Fn")
+  setOutputStyle = (val) =>{
+    // this.setState({...this.state, outputStyle: this.state.outputStyle+val});
     this.setState({outputStyle: !this.state.outputStyle});
+    // this.setState({outputStyle: true});
+    // this.setState((prevState)=> ({
+    //   outputStyle: prevState.outputStyle + val
+    // }));
   }
 
   handleVal = () => {
@@ -69,40 +73,32 @@ class App extends Component {
   };
 
   render() {
-    const { blur, modalIsOpen, skewChanged, skew } = this.state;
-    let cssProperties={};
-    if(skewChanged){
-      cssProperties["--skewVal"] = skew;
-    }
-
+    const { blur, color, modalIsOpen } = this.state;
 
     return (
-      <div className="App" style={cssProperties} ref={this.appRef}>
-
+      <div className="App">
         <main className="main p-0 m-0">
-          <div
-            className="font-weight-bold p-3 main-title"
+          <h2
+            className="font-weight-bold p-3"
           >
-            <h2>React Rotate App</h2>
-          
-          <h4>
-          <span
+            React Rotate App -{" "}
+            <span
               className="titleBlur"
               style={{ filter: "blur(" + blur + "px)" }}
             >
               Update CSS Vars
             </span>{" "}
-            <span className="titleCol">
+            <span className="titleCol" style={{ color: color }}>
               with JS
             </span>
-          </h4>
-          </div>
+          </h2>
           <ControlModalContext.Provider
             value={{ onChanging: this.handleChange, onValue: this.state, onOutputStyle: this.setOutputStyle}}
           >
             <Controls />
           </ControlModalContext.Provider>
           <Suspense fallback={<p>Loading...</p>}>
+            {/* <Photo sorc={img} onSpacing={spacing} onBgr={color} onBlur={blur} /> */}
             <Photo onState={this.state} />
           </Suspense>
         </main>

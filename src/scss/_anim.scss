@@ -1,0 +1,192 @@
+$perspective: 1500px;
+
+@keyframes animRotate {
+  0% {
+    transform: perspective($perspective) rotate(0)
+      skew(calc(var(--skewVal) * 1deg));
+  }
+  100% {
+    transform: perspective($perspective) rotate(360deg)
+      skew(calc(var(--skewVal) * 1deg));
+  }
+}
+
+@keyframes animRotateXZ {
+  0% {
+    transform: perspective($perspective) rotateX(0deg) rotateZ(0deg)
+      skew(calc(var(--skewVal) * 1deg));
+  }
+
+  100% {
+    transform: perspective($perspective) rotateX(360deg) rotateZ(360deg)
+      skew(calc(var(--skewVal) * 1deg));
+  }
+}
+
+@keyframes animRotateZX {
+  0% {
+    transform: perspective($perspective) rotateZ(0deg) rotateX(0deg)
+      skew(calc(var(--skewVal) * 1deg));
+  }
+
+  100% {
+    transform: perspective($perspective) rotateZ(360deg) rotateX(360deg)
+      skew(calc(var(--skewVal) * 1deg));
+  }
+}
+
+@keyframes animRotateYZ {
+  0% {
+    transform: perspective($perspective) rotateY(0deg) rotateZ(0deg)
+      skew(calc(var(--skewVal) * 1deg));
+  }
+
+  100% {
+    transform: perspective($perspective) rotateY(360deg) rotateZ(360deg)
+      skew(calc(var(--skewVal) * 1deg));
+  }
+}
+
+@keyframes animRotateZY {
+  0% {
+    transform: perspective($perspective) rotateZ(0deg) rotateY(0deg)
+      skew(calc(var(--skewVal) * 1deg));
+  }
+
+  100% {
+    transform: perspective($perspective) rotateZ(360deg) rotateY(360deg)
+      skew(calc(var(--skewVal) * 1deg));
+  }
+}
+
+@keyframes animRotateXYZ {
+  0% {
+    transform: perspective($perspective) rotateX(0deg) rotateY(0deg)
+      rotateZ(0deg) skew(calc(var(--skewVal) * 1deg));
+  }
+
+  100% {
+    transform: perspective($perspective) rotateX(360deg) rotateY(360deg)
+      rotateZ(360deg) skew(calc(var(--skewVal) * 1deg));
+  }
+}
+
+@keyframes animRotateXZY {
+  0% {
+    transform: perspective($perspective) rotateX(0deg) rotateZ(0deg)
+      rotateY(0deg) skew(calc(var(--skewVal) * 1deg));
+  }
+
+  100% {
+    transform: perspective($perspective) rotateX(360deg) rotateZ(360deg)
+      rotateY(360deg) skew(calc(var(--skewVal) * 1deg));
+  }
+}
+
+@keyframes animRotateYXZ {
+  0% {
+    transform: perspective($perspective) rotateY(0deg) rotateX(0deg)
+      rotateZ(0deg) skew(calc(var(--skewVal) * 1deg));
+  }
+
+  100% {
+    transform: perspective($perspective) rotateY(360deg) rotateX(360deg)
+      rotateZ(360deg) skew(calc(var(--skewVal) * 1deg));
+  }
+}
+
+@keyframes animRotateYZX {
+  0% {
+    transform: perspective($perspective) rotateY(0deg) rotateZ(0deg)
+      rotateX(0deg) skew(calc(var(--skewVal) * 1deg));
+  }
+
+  100% {
+    transform: perspective($perspective) rotateY(360deg) rotateZ(360deg)
+      rotateX(360deg) skew(calc(var(--skewVal) * 1deg));
+  }
+}
+
+@keyframes animRotateZXY {
+  0% {
+    transform: perspective($perspective) rotateZ(0deg) rotateX(0deg)
+      rotateY(0deg) skew(calc(var(--skewVal) * 1deg));
+  }
+
+  100% {
+    transform: perspective($perspective) rotateZ(360deg) rotateX(360deg)
+      rotateY(360deg) skew(calc(var(--skewVal) * 1deg));
+  }
+}
+
+@keyframes animRotateZYX {
+  0% {
+    transform: perspective($perspective) rotateZ(0deg) rotateY(0deg)
+      rotateX(0deg) skew(calc(var(--skewVal) * 1deg));
+  }
+
+  100% {
+    transform: perspective($perspective) rotateZ(360deg) rotateY(360deg)
+      rotateX(360deg) skew(calc(var(--skewVal) * 1deg));
+  }
+}
+
+@keyframes animRotateXY {
+  0% {
+    transform: perspective($perspective) rotateX(0) rotateY(0)
+      skew(calc(var(--skewVal) * 1deg));
+  }
+
+  100% {
+    transform: perspective($perspective) rotateX(360deg) rotateY(360deg)
+      skew(calc(var(--skewVal) * 1deg));
+  }
+}
+
+@keyframes animRotateYX {
+  0% {
+    transform: perspective($perspective) rotateY(0) rotateX(0)
+      skew(calc(var(--skewVal) * 1deg));
+  }
+
+  100% {
+    transform: perspective($perspective) rotateY(360deg) rotateX(360deg)
+      skew(calc(var(--skewVal) * 1deg));
+  }
+}
+
+@keyframes animRotateX {
+  0% {
+    transform: perspective($perspective) rotateX(0)
+      skew(calc(var(--skewVal) * 1deg));
+  }
+
+  100% {
+    transform: perspective($perspective) rotateX(360deg)
+      skew(calc(var(--skewVal) * 1deg));
+  }
+}
+
+@keyframes animRotateY {
+  0% {
+    transform: perspective($perspective) rotateY(0)
+      skew(calc(var(--skewVal) * 1deg));
+  }
+
+  100% {
+    transform: perspective($perspective) rotateY(360deg)
+      skew(calc(var(--skewVal) * 1deg));
+  }
+}
+
+@keyframes animRotateZ {
+  0% {
+    transform: perspective($perspective) rotateZ(0)
+      skew(calc(var(--skewVal) * 1deg));
+  }
+
+  100% {
+    transform: perspective($perspective) rotateZ(360deg)
+      skew(calc(var(--skewVal) * 1deg));
+  }
+}

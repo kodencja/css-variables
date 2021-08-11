@@ -1,0 +1,143 @@
+@import "./vars";
+@import "./mixins";
+@import "./anim";
+@import "./form";
+
+$grid-breakpoints: (
+  xs: 0,
+  xsm: 400px,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1900px,
+);
+
+$container-max-widths: (
+  xsm: 380px,
+  sm: 540px,
+  md: 720px,
+  lg: 960px,
+  xl: 1140px,
+  xxl: 1610px,
+);
+
+@import "../../node_modules/bootstrap/scss/bootstrap";
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+%middle-center {
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+
+#root {
+  width: 100%;
+}
+
+.App {
+  --skewVal: 0;
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+.main {
+  max-width: 100%;
+}
+
+.main-title {
+  max-width: 100%;
+  text-align: center;
+  background-color: $main-bgr-color;
+  color: color-inverse($main-bgr-color);
+}
+
+.titleBlur {
+  color: lighten(color-inverse($main-bgr-color), 15%);
+}
+
+.titleCol {
+  color: darken(color-inverse($main-bgr-color), 15%);
+}
+
+.sec1 {
+  height: 100%;
+  background-color: darken(
+    (color-mixed($main-bgr-color, $mid-gray1, 10%)),
+    15%
+  );
+  color: white;
+  border-bottom: 4px solid $smoke;
+  border-top: 4px solid $smoke;
+  overflow: hidden;
+  transition: transform $fast-time ease-out;
+}
+
+.sec2 {
+  width: 100%;
+  height: auto;
+  @include paddMrg("padding", 4rem, 4rem);
+  overflow: hidden;
+}
+
+.container {
+  max-width: 100%;
+}
+
+.row {
+  @extend %middle-center;
+}
+
+.cont-img {
+  font-size: size("quite-normal");
+  transform: perspective($perspective);
+  transform-style: preserve-3d;
+}
+
+.image {
+  transform: perspective($perspective);
+  animation: ($slower-time * 2) backwards linear infinite;
+  animation-name: animRotate;
+}
+
+.move-up-mrg {
+  margin-top: -50%;
+}
+
+@media all and (max-width: 575px) {
+  .sec2 {
+    @include paddMrg("padding", 7rem, 7rem);
+  }
+  label {
+    @include paddMrg("margin", "top", distance("normal"));
+  }
+  .input-block {
+    @include paddMrg("margin", 0, 10px, 35px, 10px);
+  }
+  .move-up-mrg {
+    margin-top: -175%;
+  }
+}
+
+@media all and (max-width: 399px) {
+  .move-up-mrg {
+    margin-top: -500%;
+  }
+}

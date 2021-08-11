@@ -1,11 +1,11 @@
 import React, { useContext } from "react";
-import { ModalContext } from "../App";
+import { ControlModalContext } from "../App";
 import("./css/modalContent.css");
 
 function ModalContent() {
-  const modalContextValue = useContext(ModalContext);
+  const modalContextValue = useContext(ControlModalContext);
   const { handleModalOpen } = modalContextValue;
-  console.log("ModalContent Fn");
+  // console.log("ModalContent Fn");
 
   return (
     <>
@@ -24,7 +24,7 @@ function ModalContent() {
           <p>
             &nbsp;&nbsp;&nbsp;This page was built in <b>REACT.JS</b> with class
             and functional components supported by <b>HOOK tools</b> such as{" "}
-            <b>useContext</b>. Other React libraries embrace:{" "}
+            <b>useContext, useState, useRef</b> or <b>useEffect</b>. Other React libraries embrace:{" "}
             <b>createContext, memo</b> as well as <b>react-modal</b>. All
             components have been optimized using functions such as{" "}
             <b>React.memo()</b> along with '<b>areEqual</b>' function (as a

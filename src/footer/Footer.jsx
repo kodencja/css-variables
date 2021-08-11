@@ -2,7 +2,7 @@ import React from "react";
 import("./css/footer.css");
 
 function Footer({ onModalOpen }) {
-  console.log("Footer Fn");
+  // console.log("Footer Fn");
   return (
     <footer className="down-buttons text-center">
       <button type="link" className="btn-down home-page-link shadow-mid-dark">

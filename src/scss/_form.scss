@@ -1,0 +1,224 @@
+@mixin shadow($shadow-size, $shadow-blur, $shadow-color) {
+  box-shadow: $shadow-size $shadow-size $shadow-blur $shadow-color,
+    0px 0px $shadow-size lighten($shadow-color, 5%);
+}
+
+%track {
+  width: $track-width;
+  height: $track-height;
+  cursor: pointer;
+}
+
+@mixin thumb {
+  @include shadow($thumb-shadow-size, $thumb-shadow-blur, $thumb-shadow-color);
+  border: $thumb-border-width solid $thumb-border-color;
+  height: $thumb-height;
+  width: $thumb-width;
+  border-radius: $thumb-radius;
+  background: $thumb-color;
+  cursor: pointer;
+}
+
+input[type="range"] {
+  -webkit-appearance: none;
+  margin: $thumb-height/3 0;
+  width: $track-width;
+
+  &:focus {
+    outline: none;
+  }
+
+  &::-webkit-slider-runnable-track {
+    @extend %track;
+    @include shadow(
+      $track-shadow-size,
+      $track-shadow-blur,
+      $track-shadow-color
+    );
+    background: $track-color;
+    border-radius: $track-radius;
+    border: $track-border-width solid $track-border-color;
+  }
+
+  &::-webkit-slider-thumb {
+    @include thumb;
+    -webkit-appearance: none;
+    margin-top: (
+      ((-$track-border-width * 2 + $track-height) / 2) - ($thumb-height / 2)
+    );
+    margin-bottom: (
+      ((-$track-border-width * 2 + $track-height) / 2) - ($thumb-height / 2)
+    );
+    // margin-top: -6px;
+    // margin-bottom: -6px;
+  }
+
+  &:focus::-webkit-slider-runnable-track {
+    background: lighten($track-color, $contrast);
+  }
+
+  &::-moz-range-track {
+    @extend %track;
+    @include shadow(
+      $track-shadow-size,
+      $track-shadow-blur,
+      $track-shadow-color
+    );
+    background: $track-color;
+    border-radius: $track-radius;
+    border: $track-border-width solid $track-border-color;
+  }
+  &::-moz-range-thumb {
+    @include thumb;
+  }
+
+  &::-ms-track {
+    @extend %track;
+    background: transparent;
+    border-color: transparent;
+    border-width: $thumb-width 0;
+    color: transparent;
+  }
+
+  &::-ms-fill-lower {
+    background: darken($track-color, $contrast);
+    border: $track-border-width solid $track-border-color;
+    border-radius: $track-radius * 2;
+    @include shadow(
+      $track-shadow-size,
+      $track-shadow-blur,
+      $track-shadow-color
+    );
+  }
+  &::-ms-fill-upper {
+    background: $track-color;
+    border: $track-border-width solid $track-border-color;
+    border-radius: $track-radius * 2;
+    @include shadow(
+      $track-shadow-size,
+      $track-shadow-blur,
+      $track-shadow-color
+    );
+  }
+  &::-ms-thumb {
+    @include thumb;
+  }
+  &:focus::-ms-fill-lower {
+    background: $track-color;
+  }
+  &:focus::-ms-fill-upper {
+    background: lighten($track-color, $contrast);
+  }
+}
+
+.bubble {
+  font-size: size("quite-normal");
+  background-color: $bubble-bgr-color;
+  color: $thumb-color;
+  @include paddMrg("margin", "top", $bubble-radius / 2);
+  @include paddMrg("padding", $bubble-radius / 2, $bubble-radius * 2);
+  // margin-top: 2px;
+  // padding: 2px 8px;
+  position: absolute;
+  border-radius: $bubble-radius;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+label {
+  @include paddMrg(
+    "margin",
+    distance("small-quite"),
+    distance("zero"),
+    distance("very-small"),
+    distance("zero")
+  );
+  text-align: center;
+  display: block !important;
+  font-size: size("quite-normal");
+  color: lighten(color-mixed($track-color, $bubble-bgr-color, 50%), 60%);
+}
+
+.input-cont {
+  overflow: hidden;
+}
+
+.input-block {
+  width: auto;
+  position: relative;
+  @include paddMrg("margin", 0, 20px, 35px, 20px);
+  transition: transform $short-time ease-out;
+}
+
+form {
+  overflow: hidden;
+  transition: all $quite-slow-time ease-out;
+}
+
+.form-control {
+  display: block;
+  width: fit-content !important;
+  font-size: size("bit-larger");
+  font-weight: weight("normal");
+  @include paddMrg("padding", distance("zero"), distance("very-small"));
+  @include paddMrg("margin", 0, auto);
+  background-color: $thumb-color;
+  background-clip: padding-box;
+  border: 1px solid $border-color1;
+  border-radius: distance("very-small");
+  transition: border-color $flash-time ease-in-out,
+    box-shadow $flash-time ease-in-out;
+
+  &::-ms-expand {
+    background-color: transparent;
+    border: 0;
+  }
+
+  &:-moz-focusring {
+    color: transparent;
+    text-shadow: 0 0 0 #495057;
+  }
+
+  &:focus {
+    color: #495057;
+    background-color: #fff;
+    border-color: #80bdff;
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+  }
+
+  &::-webkit-input-placeholder {
+    color: #6c757d;
+    opacity: 1;
+  }
+
+  &::-moz-placeholder {
+    color: #6c757d;
+    opacity: 1;
+  }
+
+  &:-ms-input-placeholder {
+    color: #6c757d;
+    opacity: 1;
+  }
+
+  &::-ms-input-placeholder {
+    color: #6c757d;
+    opacity: 1;
+  }
+
+  &::placeholder {
+    color: #6c757d;
+    opacity: 1;
+  }
+}
+
+.toggle-icon {
+  background-color: lighten($mid-gray1, 40%) !important;
+  padding: 3px 6px !important;
+  font-size: size("small-quite") !important;
+}
+
+.controls {
+  transition: all $easy-time ease-out;
+}

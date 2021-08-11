@@ -1,29 +1,29 @@
 import React from "react";
 
 function areEqual(prevProps, nextProps) {
-  return prevProps.onValue.color === nextProps.onValue.color;
+  return prevProps.onValue.bgrCol === nextProps.onValue.bgrCol;
 }
 
-function Color(props) {
+function BgrCol(props) {
   const { onChanging, onValue } = props;
-  // console.log("Color Comp.");
+  // console.log("BgrCol Comp.");
 
   return (
     <div className="input-cont col-10 col-xsm-6 col-sm-3 px-sm-2">
       <div className="input-block">
-        <label htmlFor="color">Base Color</label>
+        <label htmlFor="bgrCol">Bgr Color</label>
         <input
           className="form-control-range"
-          id="color"
+          id="bgrCol"
           type="color"
-          name="color"
+          name="bgrCol"
           onChange={onChanging}
-          value={onValue.color}
+          value={onValue.bgrCol}
         />
-        <output className="bubble">{onValue.color}</output>
+        <output className="bubble">{onValue.bgrCol}</output>
       </div>
     </div>
   );
 }
 
-export default React.memo(Color, areEqual);
+export default React.memo(BgrCol, areEqual);
