@@ -1,7 +1,18 @@
-import React from "react";
+import React, { useMemo } from "react";
 
-function ChooseAnim({ onChanging }) {
+function ChooseAnim({ onState, onChanging }) {
   //   console.log("ChooseAnim Comp.");
+
+  const animList = useMemo(() => {
+    return onState.options.map((name, ind) => {
+      return (
+        <option key={ind} value={onState.optionsValues[ind]}>
+          {name}
+        </option>
+      );
+    });
+  }, []);
+
   return (
     <div className="animation-type form-group">
       <div className="input-block ml-2">
@@ -13,7 +24,8 @@ function ChooseAnim({ onChanging }) {
           onChange={onChanging}
           defaultValue="animRotateXYZ"
         >
-          <option value="none">none</option>
+          {animList}
+          {/* <option value="none">none</option>
           <option value="animRotate">rotate</option>
           <option value="animRotateX">rotate-X</option>
           <option value="animRotateY">rotate-Y</option>
@@ -29,7 +41,7 @@ function ChooseAnim({ onChanging }) {
           <option value="animRotateYXZ">rotate-Y-X-Z</option>
           <option value="animRotateYZX">rotate-Y-Z-X</option>
           <option value="animRotateZXY">rotate-Z-X-Y</option>
-          <option value="animRotateZYX">rotate-Z-Y-X</option>
+          <option value="animRotateZYX">rotate-Z-Y-X</option> */}
         </select>
       </div>
     </div>

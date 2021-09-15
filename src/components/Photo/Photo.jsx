@@ -14,7 +14,7 @@ function areEqual(prevProps, nextProps) {
     prevProps.onState.transOrigY === nextProps.onState.transOrigY &&
     prevProps.onState.transOrigZ === nextProps.onState.transOrigZ &&
     prevProps.onState.skew === nextProps.onState.skew &&
-    prevProps.onState.animation === nextProps.onState.animation
+    prevProps.onState.currentAnimation === nextProps.onState.currentAnimation
   );
 }
 
@@ -33,7 +33,7 @@ function Photo(props) {
     transOrigX,
     transOrigY,
     transOrigZ,
-    animation,
+    currentAnimation,
   } = props.onState;
   // console.log("Photo Comp.");
 
@@ -69,7 +69,7 @@ function Photo(props) {
             padding: `${spacing}px`,
             background: color,
             filter: "blur(" + blur + "px)",
-            animationName: animation,
+            animationName: currentAnimation,
             transformOrigin: `${transOrigX}% ${transOrigY}% ${transOrigZ}px`,
             WebkitTransformOrigin: `${transOrigX}% ${transOrigY}% ${transOrigZ}px`,
             transform: `rotateX(${rotatex}deg) rotateY(${rotatey}deg) rotateZ(${rotatez}deg) skew(${skew}deg)`,

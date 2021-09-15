@@ -1,11 +1,11 @@
 import React, { useContext, useState, useEffect, lazy, Suspense } from "react";
-import { ControlModalContext } from "../App";
-const Blur = lazy(() => import("./Blur"));
-const Color = lazy(() => import("./Color"));
-const BgrCol = lazy(() => import("./BgrCol"));
-const Spacing = lazy(() => import("./Spacing"));
-const Transform = lazy(() => import("./Transform"));
-const ChooseAnim = lazy(() => import("./ChooseAnim"));
+import { ControlModalContext } from "../../App";
+const Blur = lazy(() => import("../Blur/Blur"));
+const Color = lazy(() => import("../Color/Color"));
+const BgrCol = lazy(() => import("../BgrCol/BgrCol"));
+const Spacing = lazy(() => import("../Spacing/Spacing"));
+const Transform = lazy(() => import("../Transform/Transform"));
+const ChooseAnim = lazy(() => import("../ChooseAnim/ChooseAnim"));
 
 function Controls() {
   // console.log("Controls Comp.");
@@ -38,7 +38,7 @@ function Controls() {
 
   return (
     <div role="navigation" className="container-fluid sec1 m-0">
-      <form className="py-1 mx-auto">
+      <form className="all-inputs py-1 mx-auto">
         <div className={formStyle}>
           <Suspense fallback={<p>Loading...</p>}>
             <Color onChanging={onChanging} onValue={onValue} />
@@ -66,7 +66,7 @@ function Controls() {
       </form>
       <form className="anim-choice my-2">
         <Suspense fallback={<p>Loading...</p>}>
-          <ChooseAnim onChanging={onChanging} />
+          <ChooseAnim onChanging={onChanging} onState={onValue} />
           <button className="toggle-icon btn" onClick={toggleMenu}>
             {hideForm ? "Show" : "Hide"}
           </button>

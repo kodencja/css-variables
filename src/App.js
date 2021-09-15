@@ -1,10 +1,12 @@
 import React, { Component, lazy, Suspense } from "react";
-import Controls from "./components/Controls";
+import Controls from "./components/Controls/Controls";
 import Footer from "./footer/Footer";
-import 'bootstrap/dist/css/bootstrap.css';
-import './css/style.css'
+import "bootstrap/dist/css/bootstrap.css";
+import "./css/style.css";
+import Header from "./components/Header/Header";
+import SubHeader from "./components/subHeader/SubHeader";
 
-const Photo = lazy(() => import("./components/Photo"));
+const Photo = lazy(() => import("./components/Photo/Photo"));
 const ModalComp = lazy(() => import("./footer/ModalComp"));
 
 export const ControlModalContext = React.createContext();
@@ -23,39 +25,80 @@ class App extends Component {
     transOrigX: 50,
     transOrigY: 50,
     transOrigZ: 0,
-    animation: 'animRotateXYZ',
+    currentAnimation: "animRotateXYZ",
     modalIsOpen: false,
     outputStyle: false,
+    options: [
+      "none",
+      "rotate-X",
+      "rotate-Y",
+      "rotate-Z",
+      "rotate-X-Y",
+      "rotate-Y-X",
+      "rotate-X-Z",
+      "rotate-Z-X",
+      "rotate-Y-Z",
+      "rotate-Z-Y",
+      "rotate-X-Y-Z",
+      "rotate-X-Z-Y",
+      "rotate-Y-X-Z",
+      "rotate-Y-Z-X",
+      "rotate-Z-X-Y",
+      "rotate-Z-Y-X",
+    ],
+    optionsValues: [
+      "none",
+      "animRotate",
+      "animRotateX",
+      "animRotateY",
+      "animRotateZ",
+      "animRotateXY",
+      "animRotateXY",
+      "animRotateXZ",
+      "animRotateZX",
+      "animRotateYZ",
+      "animRotateZY",
+      "animRotateXYZ",
+      "animRotateXZY",
+      "animRotateYXZ",
+      "animRotateYZX",
+      "animRotateZXY",
+      "animRotateZYX",
+    ],
   };
 
   appRef = React.createRef();
 
-  componentDidUpdate(){
-    
-    const skewVal = getComputedStyle(this.appRef.current).getPropertyValue("--skewVal");
+  componentDidUpdate() {
+    const skewVal = getComputedStyle(this.appRef.current).getPropertyValue(
+      "--skewVal"
+    );
 
     const skewValNo = parseInt(skewVal);
 
-    if(skewValNo != this.state.skew){
-      const animName = this.state.animation;
+    if (skewValNo != this.state.skew) {
+      const animName = this.state.currentAnimation;
 
-      this.setState({skewChanged: !this.state.skewChanged, animation: 'none'}, ()=>{
-        this.setState({animation: animName});
-      })
-    }  
+      this.setState(
+        { skewChanged: !this.state.skewChanged, currentAnimation: "none" },
+        () => {
+          this.setState({ currentAnimation: animName });
+        }
+      );
+    }
   }
 
   handleChange = (e) => {
     this.setState({ [e.target.name]: e.target.value });
-    if(e.target.name === 'skew'){
-      this.setState({skewChanged: !this.state.skewChanged})
+    if (e.target.name === "skew") {
+      this.setState({ skewChanged: !this.state.skewChanged });
     }
   };
 
-  setOutputStyle = () =>{
+  setOutputStyle = () => {
     // console.log("setOutputStyle Fn")
-    this.setState({outputStyle: !this.state.outputStyle});
-  }
+    this.setState({ outputStyle: !this.state.outputStyle });
+  };
 
   handleVal = () => {
     return this.state.spacing;
@@ -70,17 +113,15 @@ class App extends Component {
 
   render() {
     const { blur, modalIsOpen, skewChanged, skew } = this.state;
-    let cssProperties={};
-    if(skewChanged){
+    let cssProperties = {};
+    if (skewChanged) {
       cssProperties["--skewVal"] = skew;
     }
 
-
     return (
       <div className="App" style={cssProperties} ref={this.appRef}>
-
         <main className="main p-0 m-0">
-          <div
+          {/* <div
             className="font-weight-bold p-3 main-title"
           >
             <h2>React Rotate App</h2>
@@ -96,10 +137,20 @@ class App extends Component {
               with JS
             </span>
           </h4>
-          </div>
+          </div> */}
           <ControlModalContext.Provider
-            value={{ onChanging: this.handleChange, onValue: this.state, onOutputStyle: this.setOutputStyle}}
+            value={{
+              onChanging: this.handleChange,
+              onValue: this.state,
+              onOutputStyle: this.setOutputStyle,
+            }}
           >
+            <Header text="React Rotate App">
+              <h4>
+                <SubHeader classN="titleBlur" text="Update CSS Vars " />
+                <SubHeader classN="titleCol" text="with JS " />
+              </h4>
+            </Header>
             <Controls />
           </ControlModalContext.Provider>
           <Suspense fallback={<p>Loading...</p>}>
