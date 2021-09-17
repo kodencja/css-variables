@@ -30,6 +30,7 @@ class App extends Component {
     outputStyle: false,
     options: [
       "none",
+      'rotate',
       "rotate-X",
       "rotate-Y",
       "rotate-Z",

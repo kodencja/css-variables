@@ -1,17 +1,29 @@
 import React, { useMemo } from "react";
 
-function ChooseAnim({ onState, onChanging }) {
+// function ChooseAnim({ onState, onChanging }) {
+function ChooseAnim({ onChanging, options, optionsValues }) {
   //   console.log("ChooseAnim Comp.");
 
-  const animList = useMemo(() => {
-    return onState.options.map((name, ind) => {
-      return (
-        <option key={ind} value={onState.optionsValues[ind]}>
-          {name}
-        </option>
-      );
-    });
-  }, []);
+  // const animList = useMemo(() => {
+  const animList = () => {
+    return (
+      options &&
+      options.map((name, ind) => {
+        return (
+          <option
+            key={ind}
+            value={optionsValues[ind]}
+            label={optionsValues[ind]}
+            data-testid={name}
+          >
+            {name}
+          </option>
+        );
+      })
+    );
+  };
+  // );
+  // }, []);
 
   return (
     <div className="animation-type form-group">
@@ -23,8 +35,23 @@ function ChooseAnim({ onState, onChanging }) {
           name="animation"
           onChange={onChanging}
           defaultValue="animRotateXYZ"
+          data-testid="animation-select"
+          // multiple
         >
-          {animList}
+          {options &&
+            options.map((name, ind) => {
+              return (
+                <option
+                  key={ind}
+                  value={optionsValues && optionsValues[ind]}
+                  aria-label={name}
+                  // data-testid="select-option"
+                >
+                  {name}
+                </option>
+              );
+            })}
+          {/* {animList} */}
           {/* <option value="none">none</option>
           <option value="animRotate">rotate</option>
           <option value="animRotateX">rotate-X</option>

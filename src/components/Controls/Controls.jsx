@@ -64,9 +64,14 @@ function Controls() {
           </Suspense>
         </div>
       </form>
-      <form className="anim-choice my-2">
+      <form className="anim-choice my-2" data-testid="anim-choice">
         <Suspense fallback={<p>Loading...</p>}>
-          <ChooseAnim onChanging={onChanging} onState={onValue} />
+          {/* <ChooseAnim onChanging={onChanging} onState={onValue} /> */}
+          <ChooseAnim
+            onChanging={onChanging}
+            options={onValue && onValue.options}
+            optionsValues={onValue && onValue.optionsValues}
+          />
           <button className="toggle-icon btn" onClick={toggleMenu}>
             {hideForm ? "Show" : "Hide"}
           </button>
