@@ -67,25 +67,8 @@ describe("Choose animation form", () => {
     expect(formElement).toBeInTheDocument();
   });
 
-  it("should call onChanging fn while changing options in select", async () => {
-    // render(<ChooseAnim onChanging={mockedOnChanging} onState={{}} />);
-    render(
-      <ChooseAnim
-        onChanging={mockedOnChanging}
-        optionsValues={optionsValues}
-        options={options}
-      />
-    );
-
-    // const formElement = screen.getByTestId(/anim-choice/i);
-    const selectElement = screen.getByTestId(/animation-select/i);
-    fireEvent.click(selectElement);
-    fireEvent.change(selectElement, { target: { value: "animRotateY" } });
-    expect(mockedOnChanging).toBeCalled();
-  });
-
   it("should call onChange fn with right value", async () => {
-    //  const {getByTestId} = render(<ChooseAnim onChanging={mockedOnChanging} onState={{}} />);
+    // render(<ChooseAnim onChanging={mockedOnChanging} onState={{}} />);
     render(
       <ChooseAnim
         onChanging={mockedOnChanging}
@@ -104,16 +87,9 @@ describe("Choose animation form", () => {
 
     // const selectElement = screen.getByLabelText(/animation/i);
 
-    expect(selectElement).toBeDefined();
-    expect(selectElement).not.toBeNull();
-
-    // fireEvent.click(selectElement);
-    fireEvent.mouseDown(selectElement);
-    // userEvent.selectOptions(selectElement, 'animRotateYZ');
+    fireEvent.click(selectElement);
     fireEvent.change(selectElement, { target: { value: "animRotateYZ" } });
-
-    // screen.getByRole('');
-
+    
     expect(mockedOnChanging).toBeCalled();
     expect(mockedOnChanging).toHaveBeenCalledTimes(1);
 
@@ -124,12 +100,9 @@ describe("Choose animation form", () => {
       })
     }) 
     );
-
-    // where <value> is the option value without angle brackets!
-    // userEvent.selectOptions(selectElement, 'animRotateYZ');
   });
 
-
+  
   it("should render the choosen option in select", async () => {
     //  const {getByTestId} = render(<ChooseAnim onChanging={mockedOnChanging} onState={{}} />);
     render(

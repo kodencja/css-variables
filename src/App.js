@@ -122,23 +122,7 @@ class App extends Component {
     return (
       <div className="App" style={cssProperties} ref={this.appRef}>
         <main className="main p-0 m-0">
-          {/* <div
-            className="font-weight-bold p-3 main-title"
-          >
-            <h2>React Rotate App</h2>
-          
-          <h4>
-          <span
-              className="titleBlur"
-              style={{ filter: "blur(" + blur + "px)" }}
-            >
-              Update CSS Vars
-            </span>{" "}
-            <span className="titleCol">
-              with JS
-            </span>
-          </h4>
-          </div> */}
+
           <ControlModalContext.Provider
             value={{
               onChanging: this.handleChange,
@@ -154,10 +138,13 @@ class App extends Component {
             </Header>
             <Controls />
           </ControlModalContext.Provider>
+
           <Suspense fallback={<p>Loading...</p>}>
             <Photo onState={this.state} />
           </Suspense>
+
         </main>
+        
         <Footer onModalOpen={this.handleModalOpen} />
         <Suspense fallback={<p>Loading...</p>}>
           <ControlModalContext.Provider

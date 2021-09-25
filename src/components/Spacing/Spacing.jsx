@@ -34,6 +34,7 @@ function Spacing(props) {
           ref={spacingRef}
         />
         <output
+          data-testid="spacing-output"
           className="bubble"
           style={onGetOutputStyle(onValue.spacing, spacingRef.current, "%")}
         >

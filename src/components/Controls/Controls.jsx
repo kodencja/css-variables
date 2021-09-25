@@ -18,6 +18,7 @@ function Controls() {
       let refObjMin = parseInt(refObj.getAttribute("min"));
       let refObjMax = parseInt(refObj.getAttribute("max"));
       if (refObjMin < 0) refObjMin = refObjMin * -1;
+
       return {
         left:
           ((parseInt(inputVal) + refObjMin) * 100) / (refObjMin + refObjMax) +
@@ -28,7 +29,7 @@ function Controls() {
 
   const toggleMenu = (e) => {
     e.preventDefault();
-    console.log("toggle icon clicked!");
+    // console.log("toggle icon clicked!");
     setHideForm(!hideForm);
   };
 
@@ -39,7 +40,7 @@ function Controls() {
   return (
     <div role="navigation" className="container-fluid sec1 m-0">
       <form className="all-inputs py-1 mx-auto">
-        <div className={formStyle}>
+        <div className={formStyle} data-testid="main-inputs">
           <Suspense fallback={<p>Loading...</p>}>
             <Color onChanging={onChanging} onValue={onValue} />
             <BgrCol onChanging={onChanging} onValue={onValue} />
@@ -69,10 +70,16 @@ function Controls() {
           {/* <ChooseAnim onChanging={onChanging} onState={onValue} /> */}
           <ChooseAnim
             onChanging={onChanging}
-            options={onValue && onValue.options}
-            optionsValues={onValue && onValue.optionsValues}
+            options={onValue.options}
+            optionsValues={onValue.optionsValues}
+            // options={onValue && onValue.options}
+            // optionsValues={onValue && onValue.optionsValues}
           />
-          <button className="toggle-icon btn" onClick={toggleMenu}>
+          <button
+            className="toggle-icon btn"
+            onClick={toggleMenu}
+            data-testid="btn-menu"
+          >
             {hideForm ? "Show" : "Hide"}
           </button>
         </Suspense>

@@ -14,13 +14,16 @@ function BgrCol(props) {
         <label htmlFor="bgrCol">Bgr Color</label>
         <input
           className="form-control-range"
+          aria-label="bgr-col"
           id="bgrCol"
           type="color"
           name="bgrCol"
           onChange={onChanging}
           value={onValue.bgrCol}
         />
-        <output className="bubble">{onValue.bgrCol}</output>
+        <output className="bubble" data-testid="bgr-output">
+          Bgr-Color: {onValue.bgrCol}
+        </output>
       </div>
     </div>
   );

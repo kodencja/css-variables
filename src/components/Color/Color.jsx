@@ -14,13 +14,16 @@ function Color(props) {
         <label htmlFor="color">Base Color</label>
         <input
           className="form-control-range"
+          aria-label="base-color"
           id="color"
           type="color"
           name="color"
           onChange={onChanging}
           value={onValue.color}
         />
-        <output className="bubble">{onValue.color}</output>
+        <output className="bubble" data-testid="base-color">
+          {onValue.color}
+        </output>
       </div>
     </div>
   );
