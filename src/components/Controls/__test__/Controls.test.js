@@ -36,7 +36,6 @@ describe("Choose animation form", () => {
   };
 
   test("should render the right form", async () => {
-
     renderWithProvider({});
 
     const formElement = screen.getByTestId(/anim-choice/i);
@@ -61,15 +60,11 @@ describe("Choose animation form", () => {
   });
 
   it("should call toggleMenu => setHideForm fn after clicking show btn", () => {
-
     renderWithProvider(mockedState);
     const btnMenu = screen.getByTestId("btn-menu");
-    const mainInputs =screen.getByTestId(/main-inputs/i);
+    const mainInputs = screen.getByTestId(/main-inputs/i);
 
     fireEvent.click(btnMenu);
     expect(mainInputs).toHaveClass("move-up-mrg");
-    // expect(mainInputs).not.toBeVisible();
   });
-
-
 });
