@@ -217,7 +217,7 @@ const getMockedState = (val) => {
   it('input should remain max value', ()=>{
     getMockedState(200);
 
-    const { rerender } = render(
+    render(
       <Spacing
         onChanging={mockedHandleChanging}
         onValue={mockedState}

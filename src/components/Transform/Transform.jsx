@@ -38,26 +38,27 @@ function Transform(props) {
             <input
               className="form-control-range"
               id="transOrigX"
-              aria-label="trans-orig-x"
+              aria-label="trans-orig"
               type="range"
               name="transOrigX"
               min="-100"
               max="100"
-              data-sizing="px"
               onChange={onChanging}
               value={onValue.transOrigX}
               ref={transOrigXRef}
               data-testid="transform-origin"
+              // data-testid="transform-output"
             />
             <output
               className="bubble"
+              aria-label="output-transform"
               style={
                 // left: ((parseInt(onValue.transOrigX) + 100) * 100) / 200 + "%",
                 onGetOutputStyle(onValue.transOrigX, transOrigXRef.current, "%")
                 // { position: "absolute", left: "55%" }
               }
-              // data-testid="trans-orig-x-output"
-              data-testid="trans-orig-output"
+              // data-testid="trans-orig-output"
+              data-testid="transform-output"
             >
               {onValue.transOrigX + "%"}
             </output>
@@ -69,27 +70,28 @@ function Transform(props) {
             <label htmlFor="transOrigY">TransOrig-Y</label>
             <input
               className="form-control-range"
-              aria-label="trans-orig-y"
+              aria-label="trans-orig"
               id="transOrigY"
               type="range"
               name="transOrigY"
               min="-100"
               max="100"
-              data-sizing="px"
               onChange={onChanging}
               value={onValue.transOrigY}
               ref={transOrigYRef}
               data-testid="transform-origin"
+              // data-testid="transform-rotate"
             />
             <output
               className="bubble"
+              aria-label="output-transform"
               style={onGetOutputStyle(
                 onValue.transOrigY,
                 transOrigYRef.current,
                 "%"
               )}
-              // data-testid="trans-orig-y-output"
-              data-testid="trans-orig-output"
+              // data-testid="trans-orig-output"
+              data-testid="transform-output"
             >
               {onValue.transOrigY + "%"}
             </output>
@@ -102,26 +104,27 @@ function Transform(props) {
             <input
               className="form-control-range"
               id="transOrigZ"
-              aria-label="trans-orig-z"
+              aria-label="trans-orig"
               type="range"
               name="transOrigZ"
               min="-100"
               max="100"
-              data-sizing="px"
               onChange={onChanging}
               value={onValue.transOrigZ}
               ref={transOrigZRef}
               data-testid="transform-origin"
+              // data-testid="transform-rotate"
             />
             <output
               className="bubble"
+              aria-label="output-transform"
               style={onGetOutputStyle(
                 onValue.transOrigZ,
                 transOrigZRef.current,
                 "%"
               )}
-              // data-testid="trans-orig-z-output"
-              data-testid="trans-orig-output"
+              // data-testid="trans-orig-output"
+              data-testid="transform-output"
             >
               {onValue.transOrigZ + "px"}
             </output>
@@ -141,15 +144,16 @@ function Transform(props) {
               name="rotatex"
               min="-180"
               max="180"
-              data-sizing="%"
               onChange={onChanging}
               value={onValue.rotatex}
               ref={rotateXRef}
+              data-testid="transform-rotate"
             />
             <output
               className="bubble"
+              aria-label="output-rotate"
               style={onGetOutputStyle(onValue.rotatex, rotateXRef.current, "%")}
-              data-testid="rotate-x-output"
+              data-testid="transform-output"
             >
               {onValue.rotatex + "deg"}
             </output>
@@ -167,15 +171,16 @@ function Transform(props) {
               name="rotatey"
               min="-180"
               max="180"
-              data-sizing="%"
               onChange={onChanging}
               value={onValue.rotatey}
               ref={rotateYRef}
+              data-testid="transform-rotate"
             />
             <output
               className="bubble"
+              aria-label="output-rotate"
               style={onGetOutputStyle(onValue.rotatey, rotateYRef.current, "%")}
-              data-testid="rotate-y-output"
+              data-testid="transform-output"
             >
               {onValue.rotatey + "deg"}
             </output>
@@ -193,15 +198,16 @@ function Transform(props) {
               name="rotatez"
               min="-180"
               max="180"
-              // data-sizing="px"
               onChange={onChanging}
               value={onValue.rotatez}
               ref={rotateZRef}
+              data-testid="transform-rotate"
             />
             <output
               className="bubble"
+              aria-label="output-rotate"
               style={onGetOutputStyle(onValue.rotatez, rotateZRef.current, "%")}
-              data-testid="rotate-z-output"
+              data-testid="transform-output"
             >
               {onValue.rotatez + "deg"}
             </output>
@@ -219,14 +225,14 @@ function Transform(props) {
               name="skew"
               min="-90"
               max="90"
-              data-sizing="px"
               onChange={onChanging}
               value={onValue.skew}
               ref={skewRef}
             />
             <output
               className="bubble"
-              data-testid="skew-output"
+              aria-label="output-skew"
+              data-testid="transform-output"
               style={
                 onGetOutputStyle(onValue.skew, skewRef.current, "%")
                 //  left: ((parseInt(onValue.skew) + 90) * 100) / 180 + "%"

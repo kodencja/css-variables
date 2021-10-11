@@ -97,7 +97,7 @@ const mockedOnChanging = jest.fn();
     const outputElem = screen.getByTestId("bgr-output");
 
     expect(inputElement.value).toBe("#f7d9aa");
-    expect(outputElem.textContent).toBe("Bgr-Color: #f7d9aa");
+    expect(outputElem.textContent).toBe("#f7d9aa");
     
   });
 
@@ -133,7 +133,7 @@ const mockedOnChanging = jest.fn();
   console.log(outputElem.textContent);
   console.log("mockedState2: ", mockedState);
 
-  expect(outputElem).toHaveTextContent("Bgr-Color: #f7d921");
+  expect(outputElem).toHaveTextContent("#f7d921");
   // await waitFor(() => expect(screen.getByText("#f7d921")).toBeInTheDocument());
   });
 

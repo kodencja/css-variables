@@ -22,7 +22,7 @@ function BgrCol(props) {
           value={onValue.bgrCol}
         />
         <output className="bubble" data-testid="bgr-output">
-          Bgr-Color: {onValue.bgrCol}
+          {onValue.bgrCol}
         </output>
       </div>
     </div>

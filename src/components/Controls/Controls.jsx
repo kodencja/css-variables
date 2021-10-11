@@ -70,10 +70,10 @@ function Controls() {
           {/* <ChooseAnim onChanging={onChanging} onState={onValue} /> */}
           <ChooseAnim
             onChanging={onChanging}
-            options={onValue.options}
-            optionsValues={onValue.optionsValues}
-            // options={onValue && onValue.options}
-            // optionsValues={onValue && onValue.optionsValues}
+            // options={onValue.options}
+            // optionsValues={onValue.optionsValues}
+            options={onValue && onValue.options}
+            optionsValues={onValue && onValue.optionsValues}
           />
           <button
             className="toggle-icon btn"

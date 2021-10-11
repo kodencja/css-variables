@@ -4,34 +4,22 @@ import React, { useMemo } from "react";
 function ChooseAnim({ onChanging, options, optionsValues }) {
   //   console.log("ChooseAnim Comp.");
 
-  const animList1 = useMemo(() => {
-    return options.map((name, ind) => {
-      return (
-        <option key={ind} value={optionsValues[ind]}>
-          {name}
-        </option>
-      );
-    });
-  }, []);
-
-  // return (
-  //   <div className="animation-type form-group">
-  //     <div className="input-block ml-2">
-  //       <label htmlFor="animation">Animation</label>
-  //       <select
-  //         className="form-control"
-  //         id="animation"
-  //         name="animation"
-  //         onChange={onChanging}
-  //         defaultValue="animRotateXYZ"
-  //       >
+  // const animList1 = useMemo(() => {
+  //   return options.map((name, ind) => {
+  //     return (
+  //       <option key={ind} value={optionsValues[ind]}>
+  //         {name}
+  //       </option>
+  //     );
+  //   });
+  // }, []);
 
   const animList = useMemo(() => {
     // const animList = () => {
     return (
       options &&
       options.map((name, ind) => {
-        console.log(name);
+        // console.log(name);
         return (
           <option
             key={ind}
@@ -56,7 +44,7 @@ function ChooseAnim({ onChanging, options, optionsValues }) {
         <select
           className="form-control"
           id="animation"
-          name="animation"
+          name="currentAnimation"
           onChange={onChanging}
           defaultValue="animRotateXYZ"
           data-testid="animation-select"
